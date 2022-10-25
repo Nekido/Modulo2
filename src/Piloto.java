@@ -9,17 +9,16 @@ public class Piloto {
 
     private String equipe;
 
-    public Piloto(String nome, Genero sexo, int idade, String equipe){
+    public Piloto(String nome, Genero sexo, int idade, String equipe) {
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
-        this.equipe= equipe;
+        this.equipe = equipe;
     }
 
 
-
-
     public String getNome() {
+
         return nome;
     }
 
@@ -67,6 +66,7 @@ public class Piloto {
                 ", equipe='" + equipe + '\'' +
                 '}';
     }
+
 }
 
 

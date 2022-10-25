@@ -16,7 +16,7 @@ public class Carro {
         this.numeroCarro = numeroCarro;
         this.velocidadeMaxima = velocidadeMaxima;
         this.velocidadeAtual = velocidadeAtual;
-     this.ligado = ligado;
+        this.ligado = ligado;
     }
 
     public float getVelocidadeAtual() {
@@ -31,67 +31,65 @@ public class Carro {
         if (velocidadeAtual <= 0) {
             ligado = false;
             System.out.println("Carro Desligado");
-        } else {
+        } else if (velocidadeAtual > 0) {
             System.out.println("Carro Ligado");
+
         }
         return true;
     }
 
     public float acelerar(float aceleracao) {
-        if(ligado) {
-            velocidadeAtual = getVelocidadeAtual() + aceleracao;
+        if (ligado) {
+            float novaVelocidade = getVelocidadeAtual() + aceleracao;
 
-            if (velocidadeAtual > 150) {
+            if (novaVelocidade > 150) {
                 System.out.println("Velocidade máxima atingida");
+                velocidadeAtual = novaVelocidade;
             } else {
-                System.out.println("Velocidade atual: " + velocidadeAtual + "Km/h");
+
+                velocidadeAtual = novaVelocidade;
+                System.out.println("Você acelerou, " + aceleracao + "km/h \n"
+                        + "Sua velocidade agora é: " + velocidadeAtual + "Km/h");
+
             }
         }
         return velocidadeAtual;
     }
+
     public float frear(float desaceleracao) {
-        if(ligado) {
-            velocidadeAtual = getVelocidadeAtual() - desaceleracao;
-            if (velocidadeAtual < 0) {
+        if (ligado) {
+            float novaVelocidade = getVelocidadeAtual() - desaceleracao;
+            if (novaVelocidade < 0) {
                 System.out.println("você diminuiu a velocidade a zero, o carro parou");
             } else {
-                System.out.println("Velocidade atual: " + velocidadeAtual + "Km/h");
+                velocidadeAtual = novaVelocidade;
+                System.out.println("Você optou por diminuir a velocidade em: " + desaceleracao + "km/h \n"
+                        + "Velocidade atual: " + velocidadeAtual + "Km/h");
             }
         }
         return velocidadeAtual;
     }
-    public boolean parar(){
-        if ( velocidadeAtual == 0){
-            System.out.println("Carro parado");
+
+    public boolean parar() {
+        float novaVelocidade = getVelocidadeAtual();
+
+        if (novaVelocidade <= 0) {
+            System.out.println("Você parou o carro");
+
         }
         return true;
     }
 
-        @Override
-        public String toString () {
-            return "Carro{" +
-                    "modelo='" + modelo + '\'' +
-                    ", piloto=" + piloto +
-                    ", numeroCarro=" + numeroCarro +
-                    ", velocidadeMaxima=" + velocidadeMaxima +
-                    ", velocidadeAtual=" + velocidadeAtual +
-                    ", ligado=" + ligado +
-                    '}';
-        }
-
-
-//
-//
-//        public float frear () {
-//
-//
-//        }
-//
-//        public void boolean parar() {
-//        if (velocidadeAtual <= 0) {
-//            System.out.println("O carro está parado");
-//        }
-//        }
-
-
+    @Override
+    public String toString() {
+        return "Carro{" +
+                "modelo='" + modelo + '\'' +
+                ", piloto=" + piloto +
+                ", numeroCarro=" + numeroCarro +
+                ", velocidadeMaxima=" + velocidadeMaxima +
+                ", velocidadeAtual=" + velocidadeAtual +
+                ", ligado=" + ligado +
+                '}';
     }
+
+}
